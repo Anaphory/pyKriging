@@ -694,7 +694,8 @@ class Kriging(matrixops):
         self.history['theta'].append(copy.deepcopy(self.theta))
         self.history['p'].append(copy.deepcopy(self.pl))
 
-        self.history['avgMSE'].append(self.calcuatemeanMSE(points=self.testPoints)[0])
+        if hasattr(self, "testPoints"):
+            self.history['avgMSE'].append(self.calcuatemeanMSE(points=self.testPoints)[0])
 
         currentPredictions = []
         if self.history['pointData']!=None:
